@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import Hair from "../../Assets/features/haircuut10.jpg";
 import Face from "../../Assets/features/makeup1.jpg";
@@ -44,41 +44,46 @@ export default function SalonServices() {
   });
 
   return (
-    <div
-      style={{
-        backgroundColor: "#d3d3d3",
+    <Box
+      sx={{
+        backgroundColor: "#09090C",
         minHeight: "100vh",
-        padding: "100px",
+        px: "250px",
+        marginBottom:"100px"
       }}
     >
       {/* Services Button */}
-      <Button
-        variant="outlined"
-        style={{
-          fontFamily: "Arial",
-          borderColor: "black",
-          color: "black",
-        //   fontSize: "18px",
-        //   borderRadius: "0px",
-          textTransform: "uppercase",
-          fontWeight: "bold",
-          marginBottom: "20px",
-          '&:hover': {
-            borderColor: "black",
-            color: "black",   
-               
-          },
-        }}
-      >
-        services
-      </Button>
+      <Box sx={{ pt: 6, pb: 6,marginLeft:18 }}>
+        <Button
+          variant="contained"
+          sx={{
+            paddingX: "25px",
+            py: 1,
+            color: "white",
+            backgroundColor: "black",
+            //   fontSize: "18px",
+            borderRadius: "155px",
+            textTransform: "lowercase",
+            //   fontWeight: "bold",
+            "&:hover": {
+              border: "0.5px solid black",
+              color: "black",
+              backgroundColor: "white",
+            },
+          }}
+        >
+          Services
+        </Button>
+      </Box>
 
       {/* Grid Layout */}
       <Grid container spacing={2} justifyContent="center">
         {/* Left Column */}
         <Grid item xs={2}>
           <ServiceCard image={services[0].image}>
-            <OverlayText style={{borderRadius:"100px"}}>{services[0].name}</OverlayText>
+            <OverlayText style={{ borderRadius: "100px" }}>
+              {services[0].name}
+            </OverlayText>
           </ServiceCard>
           <div style={{ marginTop: "16px" }} />
           <ServiceCard image={services[3].image}>
@@ -108,6 +113,6 @@ export default function SalonServices() {
           </ServiceCard>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
