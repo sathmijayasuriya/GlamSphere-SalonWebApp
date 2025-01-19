@@ -60,19 +60,16 @@ export default function FooterAuth() {
                 }}
               >
                 Privacy policy
-                <br />
-                <br />
+                </Typography>
                 <Typography
                   variant="body2"
                   sx={{
-                    color: "inherit",
+                    color: "rgba(255, 255, 255, 0.45)",
                     "&:hover": { color: "#715332" },
-                    textTransform: "none",
                   }}
                 >
                   © 2025 Glam Sphere. All Rights Reserved
                 </Typography>
-              </Typography>
             </Grid>
             <Grid item lg={3} xs={5} sx={{ ml: "auto" }}>
               <Box sx={{ display: "flex", gap: 1 }}>

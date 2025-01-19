@@ -5,6 +5,7 @@ const Theme = createTheme({
       MuiButton: {
         styleOverrides: {
           outlined: {
+            borderRadius: "155px",
             borderColor: "white",  // Apply border color globally
             color: "white",        // Apply text color globally
             '&:hover': {
