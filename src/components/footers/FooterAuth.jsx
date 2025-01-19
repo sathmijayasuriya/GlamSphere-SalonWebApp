@@ -1,57 +1,83 @@
 import React from 'react'
-import { Box, Grid, Typography, Link } from '@mui/material';
-import { Facebook, Twitter, WhatsApp, Instagram, YouTube } from '@mui/icons-material';
+import { Box, Container, Grid, Typography, Link, IconButton } from "@mui/material";
+import {
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  WhatsApp as WhatsAppIcon,
+  Instagram as InstagramIcon,
+  YouTube as YouTubeIcon,
+  Room as RoomIcon,
+} from "@mui/icons-material";
 
 export default function FooterAuth() {
   return (
     <>
- <Box
+  <Box
       component="footer"
       sx={{
-        backgroundColor: '#343a40',
-        padding: '20px 0',
-        color: 'white',
+        backgroundColor: "black",
+        color: "rgba(189, 135, 135, 0.65)",
+        pt: 6,
+        pb: 3,
       }}
     >
-      <Grid container spacing={2} justifyContent="space-between">
-        <Grid item xs={12}>
-          <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center' }}>
-            <i className="bi bi-geo-alt-fill" style={{ marginRight: '8px' }}></i>
-            State of Rio de Janeiro, Brazil
-          </Typography>
-          <Link href="mailto:info@company.com" sx={{ display: 'block', marginTop: '10px', color: 'white' }}>
-            info@company.com
-          </Link>
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Typography
+              variant="h5"
+              sx={{ color: "white", display: "flex", alignItems: "center" }}
+            >
+              <RoomIcon sx={{ mr: 1 }} />
+              Athurugiriya road, Kottawa
+            </Typography>
+            <Link
+              href="mailto:info@company.com"
+              underline="none"
+              sx={{ color: "rgba(255, 255, 255, 0.65)", mt: 2, display: "inline-block" }}
+            >
+              glamsphere@gmail.com
+            </Link>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography
+              variant="body2"
+              sx={{ color: "rgba(255, 255, 255, 0.45)", mb: 0 }}
+            >
+              xxxxx
+              <br />
+              <br />
+              xxxx:{" "}
+              <Link
+                href="https://google.com/"
+                target="_parent"
+                sx={{ color: "inherit" }}
+              >
+                xxx
+              </Link>
+            </Typography>
+          </Grid>
+          <Grid item lg={3} xs={5} sx={{ ml: "auto" }}>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <IconButton href="#" sx={{ color: "white" }}>
+                <FacebookIcon />
+              </IconButton>
+              <IconButton href="#" sx={{ color: "white" }}>
+                <TwitterIcon />
+              </IconButton>
+              <IconButton href="#" sx={{ color: "white" }}>
+                <WhatsAppIcon />
+              </IconButton>
+              <IconButton href="#" sx={{ color: "white" }}>
+                <InstagramIcon />
+              </IconButton>
+              <IconButton href="#" sx={{ color: "white" }}>
+                <YouTubeIcon />
+              </IconButton>
+            </Box>
+          </Grid>
         </Grid>
-
-        <Grid item xs={6}>
-          <Typography variant="body2" sx={{ marginBottom: '0' }}>
-            Copyright © Nomad Force 2021
-            <br />
-            Design: <Link href="https://templatemo.com/page/1" target="_parent" sx={{ color: 'white' }}>TemplateMo</Link>
-          </Typography>
-        </Grid>
-
-        <Grid item lg={3} xs={5} sx={{ marginLeft: 'auto' }}>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Link href="#" sx={{ color: 'white' }}>
-              <Facebook />
-            </Link>
-            <Link href="#" sx={{ color: 'white' }}>
-              <Twitter />
-            </Link>
-            <Link href="#" sx={{ color: 'white' }}>
-              <WhatsApp />
-            </Link>
-            <Link href="#" sx={{ color: 'white' }}>
-              <Instagram />
-            </Link>
-            <Link href="#" sx={{ color: 'white' }}>
-              <YouTube />
-            </Link>
-          </Box>
-        </Grid>
-      </Grid>
+      </Container>
     </Box>
     </>
   )
