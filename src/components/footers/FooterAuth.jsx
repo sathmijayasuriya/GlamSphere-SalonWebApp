@@ -23,7 +23,7 @@ export default function FooterAuth() {
         component="footer"
         sx={{
           backgroundColor: "black",
-          color: "rgba(189, 135, 135, 0.65)",
+          color: "none",
           pt: 6,
           pb: 3,
         }}
