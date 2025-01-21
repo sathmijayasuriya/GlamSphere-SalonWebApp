@@ -47,7 +47,8 @@ export default function HeaderAuth() {
     gap: "10px",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#333",
+      // backgroundColor: "#333",
+      color:"pink"
     },
   };
 
@@ -69,40 +70,48 @@ export default function HeaderAuth() {
 
         {/* Navigation Links */}
         <Box sx={{ display: "flex", gap: 3, position: "relative" }}>
-        <Button
-  component={Link}
-  to="/"
-  sx={{
-    color: "white", // Default text color
-    position: "relative", // For pseudo-element positioning
-    backgroundColor: "transparent", // No background color on hover
-    "&:hover": {
-      backgroundColor: "transparent", // Ensure no hover background
-    },
-    "&::after": {
-      content: '""', // Pseudo-element content
-      position: "absolute",
-      bottom: -6, // Position below the button
-      left: "50%",
-      transform: "translateX(-50%)",
-      width: 6, // Dot size
-      height: 6,
-      borderRadius: "50%", // Circle shape
-      backgroundColor: "transparent", // Dot hidden by default
-      transition: "background-color 0.3s ease", // Smooth hover transition
-    },
-    "&:hover::after": {
-      backgroundColor: "white", // Show the dot on hover
-    },
-  }}
->
+          <Button
+            component={Link}
+            to="/"
+            sx={{
+              color: "white",
+              transform: "none",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "pink",
+                boxShadow: "none", 
+              },
+            }}
+          >
             Home
           </Button>
-          <Button component={Link} to="/services" sx={{ color: "white" }}>
-            Services
+          <Button
+            component={Link}
+            to="/"
+            sx={{
+              color: "white",
+              transform: "none",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "pink",
+                boxShadow: "none", 
+              },
+            }}
+          >            Services
           </Button>
-          <Button component={Link} to="/gallery" sx={{ color: "white" }}>
-            Gallery
+          <Button
+            component={Link}
+            to="/"
+            sx={{
+              color: "white",
+              transform: "none",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "pink",
+                boxShadow: "none", 
+              },
+            }}
+          >            Gallery
           </Button>
 
           {/* Shop Dropdown */}
@@ -111,7 +120,13 @@ export default function HeaderAuth() {
             onMouseLeave={() => handleHover("shop", false)}
             sx={{ position: "relative" }}
           >
-            <Button sx={{ color: "white" }}>Shop</Button>
+            <Button sx={{  color: "white",
+              transform: "none",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "pink",
+                boxShadow: "none", 
+              }, }}>Shop</Button>
             {shopOpen && (
               <Box sx={dropdownStyles}>
                 <Box component={Link} to="/giftcards" sx={menuItemStyles}>
@@ -132,7 +147,13 @@ export default function HeaderAuth() {
             onMouseLeave={() => handleHover("about", false)}
             sx={{ position: "relative" }}
           >
-            <Button sx={{ color: "white" }}>About Us</Button>
+            <Button sx={{ color: "white",
+              transform: "none",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "pink",
+                boxShadow: "none", 
+              }, }}>About Us</Button>
             {aboutOpen && (
               <Box sx={dropdownStyles}>
                 <Box component={Link} to="/contact" sx={menuItemStyles}>
