@@ -1,23 +1,17 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
 import { styled } from "@mui/system";
-import Hair from "../../Assets/features/haircuut10.jpg";
-import Face from "../../Assets/features/face.webp";
-import Body from "../../Assets/features/3.jpg";
-import Nails from "../../Assets/features/nails.jpg";
-import SkinCare from "../../Assets/features/skincare.jpg";
-import More from "../../Assets/features/more.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function SalonServices() {
   const services = [
-    { name: "hair", image: Hair, height: "500px" },
-    { name: "face", image: Face, height: "300px" },
-    { name: "body", image: Body, height: "450px" },
-    { name: "nails", image: Nails, height: "300px" },
-    { name: "skin care", image: SkinCare, height: "500px" },
-    { name: "more →", image: More, height: "350px" },
+    { name: "hair", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484988/samples/ecommerce/face_g3foh1.webp", height: "500px" },
+    { name: "face", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484989/samples/ecommerce/haircuut10_skeeiz.webp", height: "300px" },
+    { name: "body", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484990/samples/ecommerce/body_pgtpta.webp", height: "450px" },
+    { name: "nails", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484988/samples/ecommerce/nails_kqituh.webp", height: "300px" },
+    { name: "skin care", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484990/samples/ecommerce/skincare_ir264c.webp", height: "500px" },
+    { name: "more →", image: "https://res.cloudinary.com/dk239jmcl/image/upload/v1737484990/samples/ecommerce/more_xduyct.webp", height: "350px" },
   ];
 
   const ServiceCard = styled("div")(({ height }) => ({
@@ -107,11 +101,10 @@ export default function SalonServices() {
             <LazyImage
               src={services[4].image}
               alt={services[4].name}
+              placeholderSrc={services[4].image}
               height={services[4].height}
               srcSet={`${services[4].image}?w=400 400w, ${services[4].image}?w=800 800w`}
-              sizes="(max-width: 600px) 400px, 800px"            
-              style={{ objectFit: "cover", position: "absolute", top: 0, left: 0 }}
-
+              sizes="(max-width: 600px) 400px, 800px"
             />
             <Overlay />
             <OverlayText>{services[4].name}</OverlayText>
@@ -121,6 +114,7 @@ export default function SalonServices() {
             <LazyImage
               src={services[3].image}
               alt={services[3].name}
+              placeholderSrc={services[3].image}
               height={services[3].height}
             />
             <Overlay />
@@ -133,6 +127,7 @@ export default function SalonServices() {
             <LazyImage
               src={services[1].image}
               alt={services[1].name}
+              placeholderSrc={services[1].image}
               height={services[1].height}
             />
             <Overlay />
@@ -143,6 +138,7 @@ export default function SalonServices() {
             <LazyImage
               src={services[0].image}
               alt={services[0].name}
+              placeholderSrc={services[0].image}
               height={services[0].height}
             />
             <Overlay />
@@ -155,6 +151,7 @@ export default function SalonServices() {
             <LazyImage
               src={services[2].image}
               alt={services[2].name}
+              placeholderSrc={services[2].image}
               height={services[2].height}
             />
             <Overlay />
@@ -165,6 +162,7 @@ export default function SalonServices() {
             <LazyImage
               src={services[5].image}
               alt={services[5].name}
+              placeholderSrc={services[5].image}
               height={services[5].height}
             />
             <Overlay />
