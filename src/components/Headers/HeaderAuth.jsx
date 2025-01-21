@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -13,17 +13,37 @@ import StyleIcon from "@mui/icons-material/Style";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
+// Memoized Buttons to avoid re-renders
+const MemoizedButton = React.memo(({ to, children }) => (
+  <Button
+    component={Link}
+    to={to}
+    sx={{
+      color: "white",
+      transform: "none",
+      "&:hover": {
+        backgroundColor: "transparent",
+        color: "pink",
+        boxShadow: "none",
+      },
+    }}
+  >
+    {children}
+  </Button>
+));
+
 export default function HeaderAuth() {
   const [shopOpen, setShopOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  const handleHover = (menu, isOpen) => {
+  // Memoize the hover handler to prevent unnecessary re-renders
+  const handleHover = useCallback((menu, isOpen) => {
     if (menu === "shop") {
       setShopOpen(isOpen);
     } else if (menu === "about") {
       setAboutOpen(isOpen);
     }
-  };
+  }, []);
 
   const dropdownStyles = {
     position: "absolute",
@@ -47,8 +67,7 @@ export default function HeaderAuth() {
     gap: "10px",
     cursor: "pointer",
     "&:hover": {
-      // backgroundColor: "#333",
-      color:"pink"
+      color: "pink",
     },
   };
 
@@ -70,49 +89,9 @@ export default function HeaderAuth() {
 
         {/* Navigation Links */}
         <Box sx={{ display: "flex", gap: 3, position: "relative" }}>
-          <Button
-            component={Link}
-            to="/"
-            sx={{
-              color: "white",
-              transform: "none",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "pink",
-                boxShadow: "none", 
-              },
-            }}
-          >
-            Home
-          </Button>
-          <Button
-            component={Link}
-            to="/"
-            sx={{
-              color: "white",
-              transform: "none",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "pink",
-                boxShadow: "none", 
-              },
-            }}
-          >            Services
-          </Button>
-          <Button
-            component={Link}
-            to="/"
-            sx={{
-              color: "white",
-              transform: "none",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "pink",
-                boxShadow: "none", 
-              },
-            }}
-          >            Gallery
-          </Button>
+          <MemoizedButton to="/">Home</MemoizedButton>
+          <MemoizedButton to="/">Services</MemoizedButton>
+          <MemoizedButton to="/">Gallery</MemoizedButton>
 
           {/* Shop Dropdown */}
           <Box
@@ -120,13 +99,7 @@ export default function HeaderAuth() {
             onMouseLeave={() => handleHover("shop", false)}
             sx={{ position: "relative" }}
           >
-            <Button sx={{  color: "white",
-              transform: "none",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "pink",
-                boxShadow: "none", 
-              }, }}>Shop</Button>
+            <MemoizedButton to="#">Shop</MemoizedButton>
             {shopOpen && (
               <Box sx={dropdownStyles}>
                 <Box component={Link} to="/giftcards" sx={menuItemStyles}>
@@ -147,13 +120,7 @@ export default function HeaderAuth() {
             onMouseLeave={() => handleHover("about", false)}
             sx={{ position: "relative" }}
           >
-            <Button sx={{ color: "white",
-              transform: "none",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "pink",
-                boxShadow: "none", 
-              }, }}>About Us</Button>
+            <MemoizedButton to="#">About Us</MemoizedButton>
             {aboutOpen && (
               <Box sx={dropdownStyles}>
                 <Box component={Link} to="/contact" sx={menuItemStyles}>
@@ -186,11 +153,9 @@ export default function HeaderAuth() {
             sx={{
               color: "white",
               cursor: "pointer",
-              // textTransform:"none",
-              transition: "color 0.3s ease", // Smooth transition for hover effect
+              transition: "color 0.3s ease",
               "&:hover": {
                 color: "pink",
-                // boxShadow: "0px 0px 10px pink",
               },
             }}
           >
