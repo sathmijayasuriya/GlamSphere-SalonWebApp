@@ -2,7 +2,7 @@ import React from "react";
 import HeaderAuth from "../components/Headers/HeaderAuth";
 import { CssBaseline } from "@mui/material";
 import { Outlet } from "react-router-dom";
-
+import FooterAuth from "../components/footers/FooterAuth";
 import { Grid2, Box } from "@mui/material";
 
 export default function AuthLayout() {
@@ -29,6 +29,8 @@ export default function AuthLayout() {
           <Outlet />
         </Box>
       </Grid2>
+      <FooterAuth />
+
     </>
   );
 }

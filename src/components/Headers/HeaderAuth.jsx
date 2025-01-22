@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../Assets/Logo/glamsphereLogo.png";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import RateReviewIcon from "@mui/icons-material/RateReview";
@@ -35,6 +35,7 @@ const MemoizedButton = React.memo(({ to, children }) => (
 export default function HeaderAuth() {
   const [shopOpen, setShopOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const location = useLocation();
 
   // Memoize the hover handler to prevent unnecessary re-renders
   const handleHover = useCallback((menu, isOpen) => {
@@ -70,16 +71,28 @@ export default function HeaderAuth() {
       color: "pink",
     },
   };
+  const getBackgroundColor = () =>{
+    switch (location.pathname) {
+      case "/":
+        return "transparent"; // Home
+      case "/services":
+        return "primary"; // Services
+      case "/gallery":
+        return "primary"; // Gallery
+      default:
+        return "primary"; // Default
+    }
+  }
 
   return (
     <AppBar
       position="absolute"
-      color="transparent"
+      color = {getBackgroundColor()}
       sx={{
         boxShadow: "none",
         zIndex: 3,
         paddingX: 10,
-        marginX: "50px",
+        // marginX: "50px",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -90,8 +103,8 @@ export default function HeaderAuth() {
         {/* Navigation Links */}
         <Box sx={{ display: "flex", gap: 3, position: "relative" }}>
           <MemoizedButton to="/">Home</MemoizedButton>
-          <MemoizedButton to="/">Services</MemoizedButton>
-          <MemoizedButton to="/">Gallery</MemoizedButton>
+          <MemoizedButton to="/services">Services</MemoizedButton>
+          <MemoizedButton to="/gallery">Gallery</MemoizedButton>
 
           {/* Shop Dropdown */}
           <Box
@@ -106,7 +119,7 @@ export default function HeaderAuth() {
                   <CardGiftcardIcon />
                   Gift Cards
                 </Box>
-                <Box component={Link} to="/products" sx={menuItemStyles}>
+                <Box component={Link} to="/shop" sx={menuItemStyles}>
                   <ShoppingBasketIcon />
                   Products
                 </Box>

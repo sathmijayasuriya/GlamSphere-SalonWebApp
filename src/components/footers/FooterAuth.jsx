@@ -22,7 +22,7 @@ export default function FooterAuth() {
       <Box
         component="footer"
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "#0d0d0d",
           color: "none",
           pt: 6,
           pb: 3,

@@ -134,8 +134,6 @@ export default function SalonServices() {
         <Grid item xs={2}>
           <ServiceCard {...services[4]} />
           <div style={{ marginTop: "16px" }} />
-          <Overlay />
-          <OverlayText>{services.name}</OverlayText>
           <ServiceCard {...services[3]} />
         </Grid>
 
