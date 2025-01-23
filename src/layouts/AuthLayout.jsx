@@ -18,7 +18,9 @@ export default function AuthLayout() {
         sx={{
           height: "100%",
           minHeight: "calc(100vh - 64px)",
-          bgcolor: "background.default",
+          // bgcolor: "background.default",
+          backgroundColor: "rgba(0, 0, 0, 0.21)",
+
         }}
       >
         <Box

@@ -106,7 +106,7 @@ export default function SalonServices() {
         px: "250px",
         marginBottom: "100px",
         py: "50px",
-        backgroundColor: "rgba(0, 0, 0, 0.21)",
+        // backgroundColor: "rgba(0, 0, 0, 0.21)",
       }}
     >
       <Box sx={{ pt: 6, pb: 6, marginLeft: 18 }}>

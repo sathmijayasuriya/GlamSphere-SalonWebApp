@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import { Box, Typography, Tabs, Tab, Button, Link, Grid, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
+import { Box, Typography, Tabs, Tab, Button, Link, Grid, IconButton, Dialog, DialogTitle, DialogContent, DialogActions,  Accordion,
+        AccordionSummary,
+        AccordionDetails,
+   } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import servicesData from "../../data/ServicesData";
+
 export default function Services() {
  
       const [activeTab, setActiveTab] = useState("Hair");
       const [visibleIndex, setVisibleIndex] = useState(0);
-      const [selectedSubService, setSelectedSubService] = useState(null); 
+      const [selectedService, setSelectedService] = useState(null);
+      const [open, setOpen] = useState(false);
 
-      const handleDialogOpen = (subService) => {
-        setSelectedSubService(subService); // Set the selected sub-service
-      };
-    
-      const handleDialogClose = () => {
-        setSelectedSubService(null); // Clear the selected sub-service
-      };
     
       const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
@@ -34,6 +33,16 @@ export default function Services() {
           setVisibleIndex(visibleIndex - 1);
         }
       };
+      const handleClickOpen = (service) => {
+        setSelectedService(service);
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+        setSelectedService(null);
+      };
+
   return (
     
     <>
@@ -43,7 +52,7 @@ export default function Services() {
           px: "250px",
           marginBottom: "100px",
           py: "50px",
-          backgroundColor: "rgba(0, 0, 0, 0.21)",
+        //   backgroundColor: "rgba(0, 0, 0, 0.21)",
           paddingTop: "100px", // Add space to account for the header
         }}
       >
@@ -138,7 +147,7 @@ export default function Services() {
                   </Typography>
                   <Link underline="none"
                         color="inherit"
-                        onClick={() => handleDialogOpen(subService)}
+                        onClick={() => handleClickOpen(subService)}
                         sx={{ cursor: "pointer" }}
   
                   >
@@ -166,27 +175,35 @@ export default function Services() {
       </Box>
       </Box>
        {/* Dialog for sub-service details */}
-       <Dialog sx={{backgroundColor: "rgba(0, 0, 0, 0.21)",}} open={!!selectedSubService} onClose={handleDialogClose}>
-        <DialogTitle>{selectedSubService?.title}</DialogTitle>
+ {/* Dialog for sub-service details */}
+ <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
+        <DialogTitle>{selectedService?.title}</DialogTitle>
         <DialogContent>
-          <Typography variant="body1" gutterBottom>
-            {selectedSubService?.description}
+          <Typography variant="body1" style={{ marginBottom: "20px" }}>
+            {selectedService?.description}
           </Typography>
-          <Typography variant="body2" color="textSecondary">
-            Price: {selectedSubService?.price}
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            Duration: {selectedSubService?.duration}
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            Additional Info: {/* Add additional info dynamically here */}
-          </Typography>
+
+          {selectedService?.subServices && (
+            <div>
+              <Typography variant="h6">Sub-Services</Typography>
+              {selectedService.subServices.map((subService, index) => (
+                <Accordion key={index} style={{ marginBottom: "10px" }}>
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography>{subService.title}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant="body2">
+                      {subService.description}
+                    </Typography>
+                    <Typography variant="body2" style={{ marginTop: "10px" }}>
+                      <strong>Price:</strong> {subService.price}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              ))}
+            </div>
+          )}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">
-            Close
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   )
